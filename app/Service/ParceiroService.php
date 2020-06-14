@@ -9,10 +9,14 @@ use Illuminate\Support\Facades\DB;
 class ParceiroService extends Model
 {
     public $parceiro;
+    public $motorista;
 
-    public function __construct(Parceiro $parceiro)
-    {
+    public function __construct(
+        Parceiro $parceiro,
+        MotoristaService $motorista
+    ) {
         $this->parceiro = $parceiro;
+        $this->motorista = $motorista;
     }
     
     public function index($parametros)
@@ -53,5 +57,12 @@ class ParceiroService extends Model
         }
 
         return $query->get();
+    }
+
+    public function store(array $data, $parceiro)
+    {
+        $motorista = $this->motorista->create($data['motorista']);
+
+        return $parceiro->motorista()->attach($motorista->id, $data);
     }
 }

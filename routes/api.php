@@ -21,4 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('parceiro')->group(function () {
     Route::get('', 'ParceiroController@index');
+    Route::post('{parceiro}/agendar', 'ParceiroController@store');
 });

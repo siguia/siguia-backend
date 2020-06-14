@@ -34,4 +34,9 @@ class Parceiro extends Model
     {
         return $this->hasMany(Agendamento::class)->with(['motorista']);
     }
+
+    public function motorista()
+    {
+        return $this->belongsToMany(Motorista::class, 'agendamento');
+    }
 }
