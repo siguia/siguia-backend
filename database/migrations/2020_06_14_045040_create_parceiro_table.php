@@ -18,7 +18,6 @@ class CreateParceiroTable extends Migration
             $table->string('nome', 65)->nullable()->default(null);
             $table->string('telefone', 15)->nullable()->default(null);
             $table->decimal('classificacao', 5, 2)->nullable()->default(null);
-            $table->timestamps();
         });
     }
 

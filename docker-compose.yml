@@ -13,7 +13,9 @@ services:
     working_dir: /srv/app/
 
   database:
-    image: mariadb:10.2
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     env_file:
       - ./docker/.docker.env
     ports:

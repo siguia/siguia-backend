@@ -16,7 +16,6 @@ class CreateOpcaoTable extends Migration
         Schema::create('opcao', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descricao', 45)->nullable()->default(null);
-            $table->timestamps();
         });
     }
 

@@ -26,8 +26,6 @@ class CreateAgendamentoTable extends Migration
 
             $table->foreign('parceiro_id')->references('id')->on('parceiro');
             $table->foreign('motorista_id')->references('id')->on('motorista');
-
-            $table->timestamps();
         });
     }
 

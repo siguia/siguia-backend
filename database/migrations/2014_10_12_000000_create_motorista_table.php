@@ -22,7 +22,6 @@ class CreateMotoristaTable extends Migration
             $table->string('placa', 8)->nullable()->default(null);
             $table->string('telefone', 15)->nullable()->default(null);
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

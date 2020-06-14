@@ -22,8 +22,6 @@ class CreateFotoTable extends Migration
 
             $table->integer('parceiro_id')->unsigned();
             $table->foreign('parceiro_id')->references('id')->on('parceiro');
-
-            $table->timestamps();
         });
     }
 

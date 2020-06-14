@@ -16,6 +16,6 @@ class ParceiroController extends Controller
     
     public function index(Request $request)
     {
-        return $this->parceiroService->index($request);
+        return $this->parceiroService->index($request->all());
     }
 }

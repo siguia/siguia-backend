@@ -20,8 +20,10 @@ class CreateEnderecoTable extends Migration
             $table->string('estado', 65)->nullable()->default(null);
             $table->string('rua', 65)->nullable()->default(null);
             $table->string('numero', 5)->nullable()->default(null);
-            $table->point('localizacao');
-            $table->timestamps();
+            $table->point('localizacao')->nullable();
+
+            $table->integer('parceiro_id')->unsigned();
+            $table->foreign('parceiro_id')->references('id')->on('parceiro');
         });
     }
 

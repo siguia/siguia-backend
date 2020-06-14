@@ -10,11 +10,16 @@ class Endereco extends Model
 
     protected $fillable = [
         'id',
-        'localicao',
         'bairro',
         'estado',
         'cidade',
         'rua',
         'numero'
     ];
+
+
+    public function getLocalizacaoAttribute()
+    {
+        return '';
+    }
 }

@@ -19,8 +19,6 @@ class CreateParceiroOpcaoTable extends Migration
 
             $table->foreign('opcao_id')->references('id')->on('opcao');
             $table->foreign('parceiro_id')->references('id')->on('parceiro');
-
-            $table->timestamps();
         });
     }
 
