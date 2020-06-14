@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Motorista extends Model
 {
     protected $table = 'motorista';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',
-        'nome',
+        'name',
         'placa',
         'telefone'
     ];

@@ -63,6 +63,6 @@ class ParceiroService extends Model
     {
         $motorista = $this->motorista->create($data['motorista']);
 
-        return $parceiro->motorista()->attach($motorista->id, $data);
+        return $parceiro->motorista()->attach($motorista->id, $data['agenda']);
     }
 }
