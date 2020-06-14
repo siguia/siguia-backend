@@ -54,4 +54,9 @@ class ParceiroService extends Model
 
         return $query->get();
     }
+
+    public function store(array $data, $parceiro, $motorista)
+    {
+        return $parceiro->motorista()->attach($motorista->id, $data);
+    }
 }
