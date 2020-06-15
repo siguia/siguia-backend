@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::prefix('parceiro')->group(function () {
+Route::prefix('parceiros')->group(function () {
     Route::get('', 'ParceiroController@index');
     Route::get('{parceiro}', 'ParceiroController@getId');
     Route::post('{parceiro}/agendar', 'ParceiroController@store');
