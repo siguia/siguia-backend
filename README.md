@@ -1,4 +1,4 @@
-# siguia-app
+# siguia-backend
 
 O SiGuia é o Guia de descanso do motorista. Nosso desafio é aumentar a oferta de pontos de descanso nas rodovias, conectando os motoristas aos melhores locais de parada e descanso. Para mais informações acesse: https://bit.ly/30IXPrE
 
