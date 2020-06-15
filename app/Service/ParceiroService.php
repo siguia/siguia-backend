@@ -65,4 +65,9 @@ class ParceiroService extends Model
 
         return $parceiro->motorista()->attach($motorista->id, $data['agenda']);
     }
+
+    public function getId(Parceiro $parceiro)
+    {
+        return $parceiro->load(['endereco', 'foto']);
+    }
 }

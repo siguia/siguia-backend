@@ -25,4 +25,9 @@ class ParceiroController extends Controller
     {   
         return $this->parceiroService->store($request->all(), $parceiro);
     }
+
+    public function getId(Request $request, Parceiro $parceiro)
+    {
+        return $this->parceiroService->getId($parceiro);
+    }
 }
