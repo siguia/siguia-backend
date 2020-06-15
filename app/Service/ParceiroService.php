@@ -18,23 +18,27 @@ class ParceiroService extends Model
         $this->parceiro = $parceiro;
         $this->motorista = $motorista;
     }
-    
-    public function index($parametros)
+
+    /**
+     * mostrar o que existe mais perto do destino
+     * mostrar a distancia da origem a cada lugar perto do destino
+     */
+    public function index($lat_lng, $cidade, $estado)
     {
         $query = $this->parceiro->select(
-            'parceiro.*',
-            'endereco.estado',
-            'endereco.cidade'
+            'parceiro.*'
         );
 
-        $lat_lng = data_get($parametros, 'lat_lng');
-        $cidade = data_get($parametros, 'cidade');
-        $estado = data_get($parametros, 'estado');
-        
         $query->join('endereco', 'endereco.parceiro_id', 'parceiro.id');
-        $query->where('endereco.cidade', 'like', "%$cidade%");
-        $query->where('endereco.estado', 'like', "%$estado%");
-        
+
+        if ($cidade) {
+            $query->where('endereco.cidade', 'like', "%$cidade%");
+        }
+
+        if ($estado) {
+            $query->where('endereco.estado', 'like', "%$estado%");
+        }
+
         if ($lat_lng) {
             list($latitude, $longitude) = explode(",", $lat_lng);
             $maxInt = PHP_INT_MAX;
@@ -53,10 +57,19 @@ class ParceiroService extends Model
                         ) AS distance"
                     )
                 ]
-            );     
+            );
         }
-
+        $query->with(['endereco']);
         return $query->get();
+    }
+
+    public function getCidadeEstadoFromLatLong($lat_lng)
+    {
+        // implementar recuperar cidade estado por $lat_lng;
+        return [
+            'cidade' => 'Belo Horizonte',
+            'estado' => 'Minas Gerais',
+        ];
     }
 
     public function store(array $data, $parceiro)

@@ -13,16 +13,20 @@ class ParceiroController extends Controller
 
     public function __construct(ParceiroService $parceiroService)
     {
-        $this->parceiroService = $parceiroService;        
+        $this->parceiroService = $parceiroService;
     }
-    
+
     public function index(Request $request)
     {
-        return $this->parceiroService->index($request->all());
+        $parametros = $request->all();
+        $lat_lng = data_get($parametros, 'lat_lng');
+        $cidade = data_get($parametros, 'search');
+        $estado = data_get($parametros, 'search');
+        return $this->parceiroService->index($lat_lng, $cidade, $estado);
     }
 
     public function store(Request $request, Parceiro $parceiro)
-    {   
+    {
         return $this->parceiroService->store($request->all(), $parceiro);
     }
 
